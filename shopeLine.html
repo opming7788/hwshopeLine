@@ -326,6 +326,13 @@
         padding-left: calc((100vw - 1088px) / 2);
         padding-right: calc((100vw - 1088px) / 2);
       }
+      @media (max-width: 900px) {
+        .Lastsection {
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+      }
 
       .Lastsection h3 {
         width: 100%;
@@ -341,6 +348,12 @@
         justify-content: center;
         align-items: center;
       }
+      @media (max-width: 900px) {
+        .sl-item {
+          margin: 48px auto 0;
+          max-width: 500px;
+        }
+      }
       .sl-img {
         width: 96px;
       }
@@ -352,7 +365,85 @@
       }
       .sl-item p {
         text-align: center;
-        
+      }
+      .Well-Liked-Brand-collect {
+        display: flex;
+        flex-direction: column;
+        padding-top: 64px;
+        padding-bottom: 64px;
+
+        padding-left: calc((100vw - 1088px) / 2);
+        padding-right: calc((100vw - 1088px) / 2);
+      }
+      .Well-Liked-Brand-collect h3 {
+        text-align: center;
+        width: 100%;
+        font-size: 177%;
+        margin-bottom: 68px;
+      }
+      .Well-Liked-Brand {
+        display: flex;
+      }
+      .Brand-item {
+        width: 100%;
+      }
+
+      .brand_pic_list {
+        display: flex;
+        justify-content: space-between;
+      }
+      .brand_Pic1 {
+        width: 147px;
+        height: 72px;
+        cursor: pointer;
+        background: url("https://img.shoplineapp.com/media/image_clips/62e0dd7d80c343001d8c1557/original.png?1658903932")
+          no-repeat 0 0/100% auto;
+      }
+
+      .brand_Pic2 {
+        width: 147px;
+        height: 72px;
+        cursor: pointer;
+        background: url("https://img.shoplineapp.com/media/image_clips/62e0dd7cd1cefe002cad488f/original.png?1658903932")
+          no-repeat 0 0/100% auto;
+      }
+
+      .brand_Pic3 {
+        width: 147px;
+        height: 72px;
+        cursor: pointer;
+        background: url("https://img.shoplineapp.com/media/image_clips/62e0dd7cff5a6400203466a2/original.png?1658903932")
+          no-repeat 0 0/100% auto;
+      }
+
+      .brand_Pic4 {
+        width: 147px;
+        height: 72px;
+        cursor: pointer;
+        background: url("https://img.shoplineapp.com/media/image_clips/62e0dd7ce1def0001d306e77/original.png?1658903932")
+          no-repeat 0 0/100% auto;
+      }
+
+      .brand_Pic5 {
+        width: 147px;
+        height: 72px;
+        cursor: pointer;
+        background: url("https://img.shoplineapp.com/media/image_clips/62e0dd7cd0680b001199fe3d/original.png?1658903932")
+          no-repeat 0 0/100% auto;
+      }
+      .footer_top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+      .footer_top h2 {
+        font-size: 250%;
+        margin-bottom: 48px;
+
+        font-weight: bold;
+        text-align: center;
       }
     </style>
   </head>
@@ -853,6 +944,34 @@
         </p>
       </div>
     </div>
+
+    <section class="Well-Liked-Brand-collect">
+      <h3>人氣品牌一致推薦使用</h3>
+      <div class="brand_pic_collect">
+        <div class="brand_pic_list">
+          <div class="brand_Pic1"></div>
+          <div class="brand_Pic2"></div>
+          <div class="brand_Pic3"></div>
+          <div class="brand_Pic4"></div>
+          <div class="brand_Pic5"></div>
+        </div>
+      </div>
+      <div class="Well-Liked-Brand">
+        <div class="sl-item Brand-item">
+          <p>
+            “ SHOPLINE
+            在行動裝置上操作的順暢度很高；使用者給的建議與意見會採納，處理的速度也不錯；還一直有新功能推出，不斷成長。
+            ”
+          </p>
+          <div><span>Stan</span>BONNY & READ 店長</div>
+        </div>
+      </div>
+    </section>
+    <div class="footer_top">
+      <h2>全球超過 600,000 商家已使用 SHOPLINE 開店</h2>
+      <a class="freeTry" style="width: 160px">免費試用14天</a>
+    </div>
+
     <script>
       //   const imgElement = document.querySelector(".imginfo img");
       //   const images = [
