@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Text Carousel</title>
+    <style>
+      .text-carousel {
+        width: 400px; /* 容器宽度 */
+        height: 50px; /* 容器高度 */
+        overflow: hidden; /* 隐藏溢出内容 */
+        border: 2px solid #ccc; /* 边框 */
+        position: relative; /* 让内部定位 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .text-carousel .text-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.5s ease-in-out; /* 平滑动画 */
+      }
+
+      .text-carousel .text-wrapper span {
+        display: block;
+        width: 100%; /* 与容器宽度相同 */
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        height: 50px; /* 每段文字的高度 */
+        line-height: 50px; /* 垂直居中 */
+      }
+
+      .text-green {
+        color: green;
+      }
+      .text-red {
+        color: red;
+      }
+      .text-blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-carousel">
+      <div class="text-wrapper">
+        <span class="text-green">網路開店</span>
+        <span class="text-red">社群購物</span>
+        <span class="text-blue">零售POS</span>
+      </div>
+    </div>
+
+    <script>
+      const textWrapper = document.querySelector(".text-wrapper");
+      const totalTexts = 3; // 总共有三段文字
+      let currentIndex = 0;
+
+      function changeText() {
+        // 计算每次的垂直位移
+        const offset = -currentIndex * 50; // 每段文字高度为 50px
+        textWrapper.style.transform = `translateY(${offset}px)`; // 垂直移动
+        currentIndex = (currentIndex + 1) % totalTexts; // 更新索引，循环播放
+      }
+
+      setInterval(changeText, 1000); // 每 3 秒切换一次文字
+    </script>
+  </body>
+</html>
