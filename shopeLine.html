@@ -174,20 +174,50 @@
         object-fit: cover;
       } */
 
-      .imginfo {
+      /* .imginfo {
         width: 464px;
         height: 500px;
-        overflow: hidden; /* 隱藏溢出內容 */
-        border-radius: 50% 50% 0% 0%; /* 圓角效果 */
-        position: relative; /* 為內部定位做準備 */
+        overflow: hidden;
+        border-radius: 50% 50% 0% 0%;
+        position: relative;
       }
       .imginfo img {
-        width: 1393px; /* 大圖片總寬度 (3 * 464px) */
-        height: 500px; /* 大圖片高度 */
+        width: 1393px;
+        height: 500px;
         position: absolute;
         top: 0;
         left: 0;
-        transition: transform 0.5s ease-in-out; /* 平滑動畫 */
+        transition: transform 0.5s ease-in-out;
+      } */
+
+      .imginfo {
+        width: 464px;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 50% 50% 0% 0%;
+        /* position: relative; */
+      }
+
+      .imginfo img {
+        width: 1392px;
+        height: 500px;
+        animation: slide 10s infinite ease-in-out;
+      }
+
+      /* 定義橫向滑動動畫 */
+      @keyframes slide {
+        0% {
+          transform: translateX(0); /* 顯示第一部分 */
+        }
+        33.33% {
+          transform: translateX(-464px); /* 顯示第二部分 */
+        }
+        66.66% {
+          transform: translateX(-928px); /* 顯示第三部分 */
+        }
+        100% {
+          transform: translateX(0); /* 回到第一部分 */
+        }
       }
 
       @media (max-width: 1000px) {
@@ -254,6 +284,29 @@
         align-items: center;
         margin-top: 100px;
       }
+      .section3temp:nth-of-type(2n + 1) .section3tempInfo {
+        order: 1;
+      }
+      .section3temp:nth-of-type(2n + 1) .section3tempIMG {
+        order: 2;
+      }
+
+      .section3temp:nth-of-type(2n) .section3tempInfo {
+        order: 2;
+      }
+      .section3temp:nth-of-type(2n) .section3tempIMG {
+        order: 1;
+      }
+
+      @media (max-width: 1000px) {
+        .section3temp:nth-of-type(2n + 1) .section3tempInfo {
+          order: 2;
+        }
+        .section3temp:nth-of-type(2n + 1) .section3tempIMG {
+          order: 1;
+        }
+      }
+
       .section3tempInfo {
         display: flex;
         flex-direction: column;
@@ -437,6 +490,7 @@
         align-items: center;
         padding-top: 64px;
         padding-bottom: 64px;
+        background-color: #ebf1f8;
       }
       .footer_top h2 {
         font-size: 250%;
@@ -444,6 +498,107 @@
 
         font-weight: bold;
         text-align: center;
+      }
+
+      .footer_bottom {
+        background-color: #00142d;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        color: #ebf1f8;
+
+        padding-left: 40px;
+        padding-right: 40px;
+        text-align: left;
+      }
+      .footer_bottom > div:nth-of-type(1) {
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+      .footer_bottom > div:nth-of-type(1) a + a {
+        margin-left: 24px;
+      }
+
+      .footer_bottom_list {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 24px;
+
+        border-top: 1px solid #ffffff50;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+
+      .footer_bottom_list h4 {
+        margin-bottom: 12px;
+        opacity: 1;
+        cursor: auto;
+        line-height: 1.2;
+      }
+      .footer_bottom_list ul {
+        margin-top: 12px;
+        padding-top: 0;
+        border: 0;
+        display: block;
+      }
+      .footer_bottom_list li {
+        font-size: 93.75%;
+      }
+
+      .footer_bottom_list li + li {
+        margin-top: 8px;
+      }
+
+      .footer_bottom_list a {
+        opacity: 0.5;
+
+        transition: 0.5s all;
+      }
+      .footer_bottom_list a:hover {
+        opacity: 1;
+      }
+
+      .footer_bottom_animate {
+        margin-bottom: 24px;
+        text-align: right;
+      }
+
+      .footer_bottom_animate a {
+        display: inline-block;
+        width: 225px;
+        text-align: center;
+        background-color: #e3b54c;
+        padding: 5px 0;
+        color: #172b4d;
+
+        font-weight: bold;
+      }
+
+      .footer_bottom_social {
+        padding-top: 24px;
+        border-top: 1px solid #ffffff50;
+        font-size: 87.5%;
+        display: flex;
+        justify-content: space-between;
+
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .footer_bottom_terms {
+        text-align: left;
+        padding-top: 16px;
+
+        font-size: 87.5%;
+      }
+
+      .footer_bottom_terms a {
+        line-height: 1;
+      }
+
+      .footer_bottom_terms a + a {
+        margin-left: 16px;
+        padding-left: 16px;
+        border-left: 1px solid #ffffff50;
       }
     </style>
   </head>
@@ -538,14 +693,6 @@
         </div>
       </div>
       <div class="section3temp">
-        <div class="section3tempIMG">
-          <img
-            src="./img/section3p2.png"
-            width="505"
-            height="442"
-            alt="SHOPLINE 打造全能電商網站"
-          />
-        </div>
         <div class="section3tempInfo">
           <h3>支持海內外電商<br />金流、物流一次搞定</h3>
           <p>
@@ -560,6 +707,14 @@
             <li>發票開立與串接</li>
           </ul>
           <a href="#"><span>了解更多金物流</span><i class="slcon-cta"></i></a>
+        </div>
+        <div class="section3tempIMG">
+          <img
+            src="./img/section3p2.png"
+            width="505"
+            height="442"
+            alt="SHOPLINE 打造全能電商網站"
+          />
         </div>
       </div>
       <div class="section3temp">
@@ -588,14 +743,6 @@
         </div>
       </div>
       <div class="section3temp">
-        <div class="section3tempIMG">
-          <img
-            src="./img/section3p4.png"
-            width="505"
-            height="442"
-            alt="SHOPLINE 智慧社群購物系統"
-          />
-        </div>
         <div class="section3tempInfo">
           <h3>「社群+電商」輕鬆開賣<br />打造一致的社群購物體驗</h3>
           <p>
@@ -613,6 +760,14 @@
           <a href="#"
             ><span>看更多社群購物功能</span><i class="slcon-cta"></i
           ></a>
+        </div>
+        <div class="section3tempIMG">
+          <img
+            src="./img/section3p4.png"
+            width="505"
+            height="442"
+            alt="SHOPLINE 智慧社群購物系統"
+          />
         </div>
       </div>
       <div class="section3temp">
@@ -972,6 +1127,92 @@
       <a class="freeTry" style="width: 160px">免費試用14天</a>
     </div>
 
+    <div class="footer_bottom">
+      <div>
+        <a href="">關於我們</a>
+        <a href="">媒體專區</a>
+      </div>
+      <div class="footer_bottom_list">
+        <div>
+          <h4>網路開店</h4>
+          <ul>
+            <li><a href="">特色總覽</a></li>
+            <li><a href="">功能介紹</a></li>
+            <li><a href="">版型主題</a></li>
+            <li><a href="">SHOP Builder</a></li>
+            <li><a href="">客戶案例</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>社群購物</h4>
+          <ul>
+            <li><a href="">特色總覽</a></li>
+            <li><a href="">功能介紹</a></li>
+            <li><a href="">IG 直播 +1</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>零售 POS</h4>
+          <ul>
+            <li><a href="">特色總覽</a></li>
+            <li><a href="">功能介紹</a></li>
+            <li><a href="">週邊硬體</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>我要開店</h4>
+          <ul>
+            <li><a href="">開店方案</a></li>
+            <li><a href="">開店說明會</a></li>
+            <li><a href="">開店諮詢</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>更多資源</h4>
+          <ul>
+            <li><a href="">開店資源圈</a></li>
+            <li><a href="">擴充功能商店</a></li>
+            <li><a href="">新手問答</a></li>
+            <li><a href="">電商教室</a></li>
+            <li><a href="">DreamBig 創品牌</a></li>
+            <li><a href="">電商數據庫</a></li>
+            <li><a href="">LINE 官方帳號</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>產品支援</h4>
+          <ul>
+            <li><a href="">產品最新動態</a></li>
+            <li><a href="">常見問題中心</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>SHOPLINE</h4>
+          <ul>
+            <li><a href="">合作機會</a></li>
+            <li><a href="">精選夥伴</a></li>
+            <li><a href="">資格與認證</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer_bottom_animate">
+        <a href="https://marketing.shopline.tw/anti-fraud" target="_blank"
+          >資訊安全保護專區</a
+        >
+      </div>
+      <div class="footer_bottom_social">
+        <span
+          >服務時間 星期一至五 上午 10 點至晚上 7 點<br />© Copyright 2024
+          SHOPLINE Tech Co., Ltd.</span
+        >
+      </div>
+      <div class="footer_bottom_terms">
+        <a href="/about/sitemap"><span>網站地圖</span></a>
+        <a href="/about/privacy"><span>隱私權政策</span></a>
+        <a href="/about/terms"><span>會員條款</span></a>
+      </div>
+    </div>
+
     <script>
       //   const imgElement = document.querySelector(".imginfo img");
       //   const images = [
@@ -988,18 +1229,18 @@
       //   }
       //   setInterval(changeImage, 1000);
 
-      const imgElement = document.querySelector(".imginfo img");
-      const totalImages = 3; // 總共有三張圖片
-      let currentIndex = 0;
+      // const imgElement = document.querySelector(".imginfo img");
+      // const totalImages = 3; // 總共有三張圖片
+      // let currentIndex = 0;
 
-      function changeImage() {
-        // 根據當前索引計算位移
-        const offset = -currentIndex * 464; // 每張小圖片寬度為 400px
-        imgElement.style.transform = `translateX(${offset}px)`; // 移動圖片
-        currentIndex = (currentIndex + 1) % totalImages; // 更新索引
-      }
+      // function changeImage() {
+      //   // 根據當前索引計算位移
+      //   const offset = -currentIndex * 464; // 每張小圖片寬度為 400px
+      //   imgElement.style.transform = `translateX(${offset}px)`; // 移動圖片
+      //   currentIndex = (currentIndex + 1) % totalImages; // 更新索引
+      // }
 
-      setInterval(changeImage, 1500); // 每 3 秒切換圖片
+      // setInterval(changeImage, 1500); // 每 3 秒切換圖片
     </script>
   </body>
 </html>
