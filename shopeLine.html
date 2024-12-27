@@ -35,7 +35,14 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        /* transition: all 0.3s ease; */
       }
+      .header_scroll {
+        height: 64px;
+        background-color: white;
+        box-shadow: 0 0 5px #00000020;
+      }
+
       .header_head {
         width: 100%;
         display: flex;
@@ -44,6 +51,22 @@
         align-items: center;
         margin: 10px 0;
       }
+      .header_head_nodisplay {
+        display: none;
+      }
+
+      @media (max-width: 1000px) {
+        .header_head {
+          display: none;
+        }
+        .header {
+          padding-left: 40px;
+          padding-right: 40px;
+          background-color: white;
+          height: 64px;
+        }
+      }
+
       .login {
         text-decoration: none;
         margin-right: 30px;
@@ -70,6 +93,9 @@
         font-style: normal;
       }
       .sl-btn {
+        background-color: transparent;
+        border: none;
+        font-size: 100%;
       }
       .sl-logo-bar {
         align-items: center;
@@ -89,6 +115,13 @@
         font-size: 100%;
         overflow: visible;
       }
+
+      @media (max-width: 1000px) {
+        .head-pannel {
+          display: none;
+        }
+      }
+
       .freeTry {
         text-decoration: none;
         width: 144px;
@@ -105,6 +138,23 @@
 
       .freeTry:hover {
         background-color: #0056b3;
+      }
+
+      @media (max-width: 1000px) {
+        .sl-logo-bar a.freeTry {
+          width: auto;
+          background-color: transparent;
+          color: #052855;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 110px;
+          text-decoration: underline;
+        }
+        .sl-logo-bar a.freeTry:hover {
+          background-color: transparent;
+          color: red;
+        }
       }
 
       a {
@@ -152,6 +202,17 @@
         text-align: justify;
         font-size: 112.5%;
       }
+
+      .info a.freeTry {
+        width: 320px;
+      }
+
+      @media (max-width: 1000px) {
+        .info a.freeTry {
+          width: 100%;
+        }
+      }
+
       .h1-firstLine {
         font-size: 250%;
         margin-bottom: 25px;
@@ -621,6 +682,7 @@
           </a>
           <ul class="head-pannel">
             <li><a href="">產品核心</a></li>
+            <li><a href="">新手上路</a></li>
             <li><a href="">開店服務</a></li>
             <li><a href="">行銷推廣</a></li>
             <li><a href="">營運管理</a></li>
@@ -645,7 +707,7 @@
           從個人賣家到國際品牌，都能以 SHOPLINE
           實現全通路零售，快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！
         </p>
-        <a class="freeTry" style="width: 320px" href="">免費試用14天</a>
+        <a class="freeTry" href="">免費試用14天</a>
         <span class="credit_card_info">＊無需綁定信用卡提供付款資訊</span>
       </div>
       <div class="imginfo">
@@ -1241,6 +1303,20 @@
       // }
 
       // setInterval(changeImage, 1500); // 每 3 秒切換圖片
+
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector(".header");
+        const header_head = document.querySelector(".header_head");
+        if (window.scrollY > 200 && window.innerWidth > 1000) {
+          // 當滾動超過 100px 時，新增或切換類名
+          header.classList.add("header_scroll");
+          header_head.classList.add("header_head_nodisplay");
+        } else if (window.scrollY < 200 && window.innerWidth > 1000) {
+          // 滾動回到頂部時，恢復原狀
+          header.classList.remove("header_scroll");
+          header_head.classList.remove("header_head_nodisplay");
+        } 
+      });
     </script>
   </body>
 </html>
