@@ -19,6 +19,7 @@
         display: flex;
         justify-content: center;
       }
+
       .header {
         display: flex;
         justify-content: space-between;
@@ -33,7 +34,7 @@
         padding-right: calc((100vw - 1088px) / 2);
 
         position: sticky;
-        top: 0;
+        top: 50px;
         z-index: 1000;
         transition: all 0.3s ease;
       }
@@ -41,6 +42,62 @@
         height: 64px;
         background-color: white;
         box-shadow: 0 0 5px #00000020;
+      }
+
+      .HeaderBanner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 50px;
+        background-color: red;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+        align-items: center;
+      }
+
+      .HeaderBanner a {
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+      }
+
+      .close-icon {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        right: 20px;
+      }
+
+      .close-icon::before,
+      .close-icon::after {
+        content: "";
+        position: absolute;
+        top: 50%; /* 定位到中间 */
+        left: 50%; /* 定位到中间 */
+        width: 100%; /* 与 .close-icon 的宽度一致 */
+        height: 2px; /* 线条高度 */
+        background-color: #333; /* 线条颜色 */
+        transform-origin: center; /* 设置旋转的基点 */
+      }
+
+      .close-icon::before {
+        transform: translate(-50%, -50%) rotate(45deg); /* 第一条斜线 */
+      }
+
+      .close-icon::after {
+        transform: translate(-50%, -50%) rotate(-45deg); /* 第二条斜线 */
+      }
+
+      #closed-banner:checked ~ .HeaderBanner {
+        display: none;
+      }
+      #closed-banner:checked ~ .header {
+        top: 0px;
       }
 
       .header_head {
@@ -664,6 +721,13 @@
     </style>
   </head>
   <body>
+    <input type="checkbox" id="closed-banner" hidden />
+    <div class="HeaderBanner">
+      <a href="">
+        <span>🎊 助攻節慶商機！新戶開店補貼多重送 👉</span>
+      </a>
+      <label for="closed-banner" class="close-icon"></label>
+    </div>
     <div class="header">
       <div class="header_head">
         <a class="login" href="#">登入</a>
