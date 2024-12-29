@@ -61,8 +61,9 @@
         flex: 1;
         text-align: center;
         text-decoration: none;
-        color: #333;
+
         font-size: 16px;
+        color: #fff;
       }
 
       .close-icon {
@@ -78,19 +79,19 @@
         content: "";
         position: absolute;
         top: 50%; /* 定位到中间 */
-        left: 50%; /* 定位到中间 */
+        /* left: 50%;  */
         width: 100%; /* 与 .close-icon 的宽度一致 */
         height: 2px; /* 线条高度 */
-        background-color: #333; /* 线条颜色 */
+        background-color: #fff; /* 线条颜色 */
         transform-origin: center; /* 设置旋转的基点 */
       }
 
       .close-icon::before {
-        transform: translate(-50%, -50%) rotate(45deg); /* 第一条斜线 */
+        transform: rotate(45deg); /* 第一条斜线 */
       }
 
       .close-icon::after {
-        transform: translate(-50%, -50%) rotate(-45deg); /* 第二条斜线 */
+        transform: rotate(-45deg); /* 第二条斜线 */
       }
 
       #closed-banner:checked ~ .HeaderBanner {
@@ -274,13 +275,50 @@
         font-size: 250%;
         margin-bottom: 25px;
       }
+
+      .text-wrapper {
+        display: flex;
+
+        overflow: hidden;
+        position: relative;
+      }
+      .text-wrapper .texts {
+        position: absolute;
+        top: 0;
+        left: 130px;
+        width: 170px;
+        animation: slideText 6s infinite;
+      }
+
+      .text-wrapper .texts span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        /* height: 50px;
+        line-height: 50px; */
+      }
+
+      @keyframes slideText {
+        0% {
+          transform: translateY(0); /* 第一段文字 */
+        }
+        40% {
+          transform: translateY(-50px); /* 第二段文字 */
+        }
+        80% {
+          transform: translateY(-100px); /* 第三段文字 */
+        }
+        100% {
+          transform: translateY(0); /* 回到第一段文字 */
+        }
+      }
       .credit_card_info {
         font-size: 81.25%;
         color: #5d6a7a;
         margin-top: 7px;
         display: inline-block;
       }
-
       /* .imginfo {
         width: 43%;
         border-radius: 50% 50% 0% 0%;
@@ -319,7 +357,7 @@
       .imginfo img {
         width: 1392px;
         height: 500px;
-        animation: slide 10s infinite ease-in-out;
+        animation: slide 6s infinite;
       }
 
       /* 定義橫向滑動動畫 */
@@ -327,10 +365,10 @@
         0% {
           transform: translateX(0); /* 顯示第一部分 */
         }
-        33.33% {
+        40% {
           transform: translateX(-464px); /* 顯示第二部分 */
         }
-        66.66% {
+        80% {
           transform: translateX(-928px); /* 顯示第三部分 */
         }
         100% {
@@ -761,9 +799,14 @@
       <div class="info">
         <h1 class="h1-firstLine">
           想在哪開店創業？
+
           <div class="text-wrapper">
-            不管是
-            <span style="color: green">網路開店</span>
+            <span>不管是</span>
+            <div class="texts">
+              <span style="color: #3d8dd1">網路開店</span>
+              <span style="color: #5e74ea">社群購物</span>
+              <span style="color: #52b985">零售POS</span>
+            </div>
           </div>
           <div>SHOPLINE 一站輕鬆開賣</div>
         </h1>
